@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev_Lab_4_Graph.WelcomePage"
+             Title="WelcomePage">
+    <Grid
+        IgnoreSafeArea="True">
+        
+        <!-- Menu grid --><!--
+        <Grid 
+            x:Name="MenuGrid"
+            HorizontalOptions="Start"
+            IgnoreSafeArea="True">
+            
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="MenuTap" />
+            </Grid.GestureRecognizers>
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFC0CB" Offset="0.1" />
+                    <GradientStop Color="#FFB6C1" Offset="0.5" />
+                    <GradientStop Color="#FF69B4" Offset="0.9" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <VerticalStackLayout 
+                Margin="0,52,24,0"
+                HorizontalOptions="End"
+                Spacing="20">
+                
+                <Label
+                    Text="Menu"
+                    HorizontalOptions="Start"
+                />
+                <Label
+                    Text="Element 1"
+                    HorizontalOptions="End"
+                />
+                <Label
+                    Text="Element 1"
+                    HorizontalOptions="End"
+                />
+                <Label
+                    Text="Element 1"
+                    HorizontalOptions="End"
+                />
+                <Label
+                    Text="Element 1"
+                    HorizontalOptions="End"
+                />      
+            </VerticalStackLayout>
+        </Grid>
+        
+        --><!-- Welcome grid --><!--
+        <Grid 
+            x:Name="WelcomeGrid"
+            Padding="24,52,24,0"
+            IgnoreSafeArea="True"
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="WelcomeGridTap" />
+            </Grid.GestureRecognizers>
+
+            <VerticalStackLayout
+                Spacing="4"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="Center">
+                
+                <Label 
+                    Text="Welcome to .NET MAUI!"
+                    FontSize="40"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </Grid>-->
+    </Grid>
+</ContentPage>

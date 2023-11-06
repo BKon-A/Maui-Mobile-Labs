@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <HorizontalStackLayout
+                Spacing="25"
+                VerticalOptions="Center">
+                <Label
+                    Text="Student name"
+                    SemanticProperties.HeadingLevel="Level3"
+                    VerticalOptions="Center"/>
+                <Entry
+                    Text="Konovalenko Bohdan Anatoliyovich"
+                    SemanticProperties.HeadingLevel="Level3"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout
+                Spacing="25"
+                VerticalOptions="Center">
+                <Label
+                    Text="Speciality"
+                    SemanticProperties.HeadingLevel="Level3"
+                    VerticalOptions="Center"/>
+                <Entry
+                    Text="Sofware engenering"
+                    SemanticProperties.HeadingLevel="Level3"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout
+                Spacing="25"
+                VerticalOptions="Center">
+                <Label
+                    Text="Group"
+                    SemanticProperties.HeadingLevel="Level3"
+                    VerticalOptions="Center"/>
+                <Entry
+                    Text="SE-21008b"
+                    SemanticProperties.HeadingLevel="Level3"/>
+                <Label
+                    Text="Course"
+                    VerticalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level3"/>
+                <Entry
+                    Text="3"
+                    SemanticProperties.HeadingLevel="Level3"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout
+                Spacing="25"
+                VerticalOptions="Center">
+                <Label
+                    Text="Course impact"
+                    SemanticProperties.HeadingLevel="Level3"
+                    VerticalOptions="Center"/>
+                <Editor
+                    Text="Get basic mobile development skills for further application in work"
+                    SemanticProperties.HeadingLevel="Level3"
+                    VerticalTextAlignment="Start"
+                    HorizontalTextAlignment="Start"
+                    WidthRequest="200"
+                    BackgroundColor="Aqua"/>
+            </HorizontalStackLayout>
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

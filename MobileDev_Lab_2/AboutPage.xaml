@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev_Lab_2.AboutPage"
+             Title="AboutPage">
+    
+    <VerticalStackLayout>
+        <StackLayout Spacing="25" HorizontalOptions="Center">
+            <Label Text="About me">
+            </Label>
+            <Image
+                Source="photo.jpeg"
+                WidthRequest="100"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+            />
+            <Label Text="Full name: Konovalenko Bohdan Anatolitovich" />
+            <Label Text="Department: ITD" />
+            <Label Text="Course: 3" />
+            <Label Text="Group: IPZ-21008b" />
+        </StackLayout>
+           
+    </VerticalStackLayout>
+</ContentPage>
