@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev_Lab_4_Chart.MainPage">
+    <Grid
+        IgnoreSafeArea="True">
+
+            <!-- MenuItem. grid -->
+        <Grid 
+            x:Name="MenuGrid"
+            HorizontalOptions="Start"
+            IgnoreSafeArea="True">
+            
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="MenuTap" />
+            </Grid.GestureRecognizers>
+            
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFC0CB" Offset="0.1" />
+                        <GradientStop Color="#FFB6C1" Offset="0.5" />
+                        <GradientStop Color="#FF69B4" Offset="0.9" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                
+                
+            
+                <VerticalStackLayout 
+                    Margin="0,52,24,0"
+                    HorizontalOptions="End"
+                    Spacing="20">
+                    
+                    <Label
+                        Text="Menu"
+                        HorizontalOptions="Start"
+                    />
+                    <Label
+                        Text="Element 1"
+                        HorizontalOptions="End"
+                    />
+                    <Label
+                        Text="Element 1"
+                        HorizontalOptions="End"
+                    />
+                    <Label
+                        Text="Element 1"
+                        HorizontalOptions="End"
+                    />
+                    <Label
+                        Text="Element 1"
+                        HorizontalOptions="End"
+                    />
+                 </VerticalStackLayout>
+            </Grid>
+
+            <Grid
+                x:Name="MainGrid">
+                
+                <VerticalStackLayout
+                    Spacing="4"
+                    VerticalOptions="Center">
+
+                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center" >
+
+                        <Label SemanticProperties.HeadingLevel="Level3" Text="G = (tg(x^4 - 6) -cos(z + xy)^3) / cos(c^2 * x^3)^4" />
+                    
+                        <VerticalStackLayout Spacing="10">
+                            <Entry Placeholder="Start interval" x:Name="startInterval"/>
+                            <Entry Placeholder="End interval" x:Name="endInterval"/>
+                            <Entry Placeholder="Step" x:Name="stepInterval"/>
+                            <Entry  Placeholder="Result" x:Name="result" IsReadOnly="True"/>
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
+                                <Button Text="Calculate" Clicked="OnClickCalculate" />
+                                <!-- <Button Text="Draw chart" Clicked="OnClickDraw" /> -->
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="100">
+                                <Button Text="Write to file" Clicked="OnClickSerialize" />
+                                <Button Text="Read for file" Clicked="OnClickDeserialize" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout VerticalOptions="End" HorizontalOptions="Center">
+                                <Button Text="About me" Clicked="OnClickAbout" />
+                                <!-- <microcharts:ChartView x:Name="chartView" /> -->
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+            <Border
+                WidthRequest="56"
+                HeightRequest="56"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                Stroke="{StaticResource LightBorderColor}"
+                StrokeThickness="6">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="28"/>
+                </Border.StrokeShape>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ProfilePicTap" />
+                </Border.GestureRecognizers>
+
+                <Image
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    Source="menu_icon.png">
+                    <Image.Clip>
+                        <EllipseGeometry
+                            Center="25,25"
+                            RadiusX="25"
+                            RadiusY="25"/>
+                    </Image.Clip>
+                </Image>
+
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
