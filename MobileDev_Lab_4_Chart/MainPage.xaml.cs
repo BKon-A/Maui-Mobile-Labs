@@ -1,133 +1,106 @@
 ﻿using Microsoft.Maui.Storage;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Text.Json;
 
 namespace MobileDev_Lab_4_Chart
 {
     public partial class MainPage : ContentPage
     {
-        Function function;
-        private const uint AnimationDuration = 1000u;
-        public string FileName { get; set; } = FileSystem.AppDataDirectory + "/result.json";
+        public Function function;
+
+        public string FileName { get; set; } = FileSystem.AppDataDirectory + "/result.txt";
+
         public MainPage()
         {
             InitializeComponent();
         }
-
         private void OnClickCalculate(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
             double functionResult = 0;
-            function = new Function(double.Parse(startInterval.Text), double.Parse(endInterval.Text), double.Parse(stepInterval.Text));
+
+            function = new Function(double.Parse(xRatio.Text), double.Parse(startInterval.Text), double.Parse(endInterval.Text), double.Parse(stepInterval.Text));
+
+            Reciever.staticFunction = function;
+
             functionResult = function.FunctionCalculate();
 
             result.Text = $"Result: {functionResult}";
         }
 
+        private void OnClickClearFile(object sender, EventArgs e)
+        {
+            // Clear the content of the file
+            File.WriteAllText(FileName, string.Empty);
+        }
+
         private void OnClickSerialize(object sender, EventArgs e)
         {
-            SerializeToJson(function);
-            File.WriteAllText(FileName, SerializeToJson(function));
+            // Serialize the function object to a string using its overridden ToString method
+            var serializedData = function.ToString();
+
+            // Append new serialized information
+            File.AppendAllText(FileName, serializedData + Environment.NewLine);
         }
 
-        private void OnClickDeserialize(object sender, EventArgs e)
-        {
-            if (File.Exists(FileName))
-            {
-                var data = File.ReadAllText(FileName);
-
-                function = DeserializeFromJson<Function>(data);
-
-                startInterval.Text = function.StartInterval.ToString();
-                endInterval.Text = function.EndInterval.ToString();
-                stepInterval.Text = function.Step.ToString();
-            }
-        }
-        public string SerializeToJson(object obj)
+        private async void OnClickDeserialize(object sender, EventArgs e)
         {
             try
             {
-                return JsonSerializer.Serialize(obj);
+                if (File.Exists(FileName))
+                {
+                    var data = File.ReadLines(FileName).Reverse().Take(5).ToList();
+
+                    if (data.Count == 5)
+                    {
+                        // Зчитати числові значення з останніх 4 рядків (в зворотньому порядку)
+                        xRatio.Text = GetNumericValue(data[4]);
+                        startInterval.Text = GetNumericValue(data[3]);
+                        endInterval.Text = GetNumericValue(data[2]);
+                        stepInterval.Text = GetNumericValue(data[1]);
+                    }
+                    else
+                    {
+                        await DisplayAlert("File Error", "Not enough lines in the file", "OK");
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("File Not Found", "File does not exist", "OK");
+                }
             }
             catch (Exception ex)
             {
-                // Обробка помилок серіалізації
-                Console.WriteLine($"Serialization error: {ex.Message}");
-                return null;
+                await DisplayAlert("Error", ex.Message, "OK");
             }
         }
 
-        public T DeserializeFromJson<T>(string json)
+        private string GetNumericValue(string input)
+        {
+            // Вибрати числові значення за допомогою роздільника ": "
+            var parts = input.Split(": ");
+            if (parts.Length > 1)
+            {
+                return parts[1].Trim(); // Повертаємо значення після ": " та видаляємо зайві пробіли
+            }
+            return string.Empty;
+        }
+
+
+
+
+        private async void OnClickReadWithFile(object sender, EventArgs e)
         {
             try
             {
-                return JsonSerializer.Deserialize<T>(json);
+                if (File.Exists(FileName))
+                {
+                    var data = File.ReadAllText(FileName);
+
+                    editor.Text = data;
+                }
             }
-            catch (Exception ex)
+            catch (NullReferenceException)
             {
-                // Обробка помилок десеріалізації
-                Console.WriteLine($"Deserialization error: {ex.Message}");
-                return default(T);
+                await DisplayAlert("NullReferenceException", "File is empty", "OK");
             }
-        }
-
-        //private void OnClickDraw(object sender, EventArgs e)
-        //{
-        //    var entries = new[]
-        //    {
-        //        new ChartEntry(212)
-        //        {
-        //            Label = "UWP",
-        //            ValueLabel = "212",
-        //            Color = SKColor.Parse("#2c3e50")
-        //        },
-        //        new ChartEntry(248)
-        //        {
-        //            Label = "Android",
-        //            ValueLabel = "248",
-        //            Color = SKColor.Parse("#77d065")
-        //        },
-        //        new ChartEntry(128)
-        //        {
-        //            Label = "iOS",
-        //            ValueLabel = "128",
-        //            Color = SKColor.Parse("#b455b6")
-        //        },
-        //        new ChartEntry(514)
-        //        {
-        //            Label = "Shared",
-        //            ValueLabel = "514",
-        //            Color = SKColor.Parse("#3498db")
-        //        }
-        //    };
-
-        //    var chart = new BarChart() { Entries = entries };
-
-        //    chartView.Chart = chart;
-        //}
-
-        private async void OnClickAbout(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AboutPage());
-        }
-
-        private async void MenuTap(object sender, TappedEventArgs e)
-        {
-            await CloseMenu();
-        }
-
-        private async Task CloseMenu()
-        {
-            _ = MainGrid.FadeTo(1, AnimationDuration);
-            _ = MainGrid.ScaleTo(1, AnimationDuration);
-            await MainGrid.TranslateTo(0, 0, AnimationDuration, Easing.CubicIn);
-        }
-
-        private async void ProfilePicTap(object sender, EventArgs e)
-        {
-            _ = MainGrid.TranslateTo(this.Width * 0.5, this.Height * 0.1, AnimationDuration, Easing.CubicIn);
-            await MainGrid.ScaleTo(0.8, AnimationDuration);
-            _ = MainGrid.FadeTo(0.8, AnimationDuration);
         }
     }
 }

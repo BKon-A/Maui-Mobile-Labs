@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-maccatalyst;net7.0-ios</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -49,8 +49,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\about_me.svg" />
+	  <None Remove="Resources\AppIcon\chart.svg" />
+	  <None Remove="Resources\AppIcon\house_home.svg" />
+	  <None Remove="Resources\AppIcon\welcome.svg" />
 	  <None Remove="Resources\Images\menu_icon.png" />
 	  <None Remove="Resources\Images\photo.jpeg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\AppIcon\about_me.svg" />
+	  <MauiImage Include="Resources\AppIcon\chart.svg" />
+	  <MauiImage Include="Resources\AppIcon\house_home.svg" />
+	  <MauiImage Include="Resources\AppIcon\welcome.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

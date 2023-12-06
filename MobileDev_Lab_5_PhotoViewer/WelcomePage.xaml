@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev_Lab_5_PhotoViewer.WelcomePage"
+             xmlns:vm="clr-namespace:MobileDev_Lab_5_PhotoViewer"
+             BindingContext="WelcomePageViewModel"
+             Title="WelcomePage">
+
+    <Grid>
+        <!--Welcome grid -->
+        <Grid 
+            x:Name="WelcomeGrid"
+            Padding="24,52,24,0"
+            IgnoreSafeArea="True"
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*">
+
+            <Label
+                Text="Welcome to my app!"
+                FontSize="36"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                />
+            <!--<Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="WelcomeGridTap" />
+            </Grid.GestureRecognizers>
+
+            <VerticalStackLayout
+                Spacing="4"
+                VerticalOptions="Center">
+
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center" >
+
+                    <Label SemanticProperties.HeadingLevel="Level3" Text="G = (tg(x^4 - 6) -cos(z + xy)^3) / cos(c^2 * x^3)^4" />
+                    <VerticalStackLayout Spacing="10">
+                        <Entry Placeholder="Start interval" x:Name="startInterval"/>
+                        <Entry Placeholder="End interval" x:Name="endInterval"/>
+                        <Entry Placeholder="Step" x:Name="stepInterval"/>
+                        <Entry  Placeholder="Result" x:Name="result" IsReadOnly="True"/>
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="50">
+                            <Button Text="Calculate" Clicked="OnClickCalculate" />
+                            --><!-- <Button Text="Draw chart" Clicked="OnClickDraw" /> --><!--
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="100">
+                            <Button Text="Write to file" Clicked="OnClickSerialize" />
+                            <Button Text="Read for file" Clicked="OnClickDeserialize" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout VerticalOptions="End" HorizontalOptions="Center">
+                            <Button Text="About me" Clicked="OnClickAbout" />
+                            --><!-- <microcharts:ChartView x:Name="chartView" /> --><!--
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </VerticalStackLayout>-->
+        </Grid>
+    </Grid>
+</ContentPage>

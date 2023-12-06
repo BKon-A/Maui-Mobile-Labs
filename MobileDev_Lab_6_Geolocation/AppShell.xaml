@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MobileDev_Lab_6_DB.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MobileDev_Lab_6_DB"
+    Shell.FlyoutBehavior="Disabled">
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent Icon="welcome.svg" ContentTemplate="{DataTemplate local:WelcomePage}" />
+
+        <ShellContent Icon="house_home.svg" ContentTemplate="{DataTemplate local:MainPage}" />
+
+        <ShellContent Icon="about_me.svg" ContentTemplate="{DataTemplate local:AboutPage}" />
+
+    </FlyoutItem>
+
+</Shell>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev_Lab_5_PhotoViewer.MainPage">
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Button Text="Select photos" Clicked="OnSelectPhotosClicked" />
+        
+        <CarouselView ItemsSource="{Binding Photos}" Grid.Row="1" Margin="4">
+            <CarouselView.ItemTemplate >
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="{Binding ImagePath}" Aspect="AspectFit" />
+                        <Label Grid.Row="1" Text="{Binding Name}" HorizontalOptions="Center" Margin="0,4,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        
+    </Grid>
+
+</ContentPage>

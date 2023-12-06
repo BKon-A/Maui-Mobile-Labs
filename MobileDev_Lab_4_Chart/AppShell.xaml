@@ -3,12 +3,22 @@
     x:Class="MobileDev_Lab_4_Chart.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MobileDev_Lab_4_Chart"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:MobileDev_Lab_4_Chart">
+    <!--.FlyoutBehavior="Disabled">-->
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.Resources>
+        
+    </Shell.Resources>
 
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent Icon="welcome.svg" ContentTemplate="{DataTemplate local:WelcomePage}" />
+
+        <ShellContent Icon="house_home.svg" ContentTemplate="{DataTemplate local:MainPage}" />
+
+        <ShellContent Icon="chart.svg" ContentTemplate="{DataTemplate local:Chart}" />
+
+        <ShellContent Icon="about_me.svg" ContentTemplate="{DataTemplate local:AboutPage}" />
+
+    </FlyoutItem>
 </Shell>

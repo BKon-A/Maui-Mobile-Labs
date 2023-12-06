@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileDev_Lab_4_Chart.AboutPage"
              Title="AboutPage">
-    <VerticalStackLayout>
-        <StackLayout Spacing="25" HorizontalOptions="Center">
-            <Label Text="About me">
-            </Label>
+    <VerticalStackLayout VerticalOptions="Center">
+        <StackLayout Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
             <Image
                 Source="photo.jpeg"
                 WidthRequest="100"

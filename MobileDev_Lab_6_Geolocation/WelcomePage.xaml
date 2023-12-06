@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev_Lab_5_PhotoViewer.WelcomePage"
+             xmlns:vm="clr-namespace:MobileDev_Lab_6_DB"
+             BindingContext="WelcomePageViewModel"
+             Title="WelcomePage">
+
+    <Grid>
+        <!--Welcome grid -->
+        <Grid 
+            x:Name="WelcomeGrid"
+            Padding="24,52,24,0"
+            IgnoreSafeArea="True"
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*">
+
+            <Label
+                Text="Welcome to my app!"
+                FontSize="36"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</ContentPage>
